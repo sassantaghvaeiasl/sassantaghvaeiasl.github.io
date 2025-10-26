@@ -4,13 +4,84 @@
   <meta charset="UTF-8">
   <title>Sassan Taghvaei Asl</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Researcher in Political Philosophy, Linguistics, and AI & Democracy. Exploring the Prediction–Plurality Paradox.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #222;
+      --accent: #005f99;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #eee;
+        --accent: #4dabf7;
+      }
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      border-bottom: 1px solid #ccc3;
+    }
+    h1 {
+      margin-bottom: 0.3rem;
+      font-size: 1.8rem;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      margin: 0 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      max-width: 800px;
+      margin: 2.5rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.3rem;
+      font-size: 1.3rem;
+    }
+    ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    a {
+      color: var(--accent);
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <h1>Sassan Taghvaei Asl</h1>
     <p>Researcher | Political Philosophy · Linguistics · AI & Democracy</p>
-    <nav>
+    <nav aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#research">Research</a>
       <a href="#publications">Publications</a>
@@ -22,8 +93,8 @@
     <h2>About Me</h2>
     <p>
       I am an interdisciplinary researcher bridging political philosophy, linguistics, and AI. 
-      My current focus is on the <strong>Prediction–Plurality Paradox</strong> based on Hannah Arendt views and how algorithmic 
-      infrastructures can sustain democratic plurality and political agency.
+      My current focus is on the <strong>Prediction–Plurality Paradox</strong> inspired by Hannah Arendt, 
+      exploring how algorithmic infrastructures can sustain democratic plurality and political agency.
     </p>
   </section>
 
@@ -36,6 +107,7 @@
       <li>Digital Public Spheres</li>
     </ul>
   </section>
+
   <section id="publications">
     <h2>Selected Publications & Works</h2>
     <ul>
@@ -44,11 +116,13 @@
       <li>Review: Stiegler, <em>The Age of Disruption</em>, Iran Book News Agency (2025)</li>
     </ul>
   </section>
+
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:staqvaei@ut.ac.ir">staqvaei@ut.ac.ir</a></p>
-    <p><a href="Resume.pdf">Download CV</a></p>
+    <p><a href="Resume.pdf" download>Download CV</a></p>
   </section>
+
   <footer>
     <p>© 2025 Sassan Taghvaei Asl</p>
   </footer>
