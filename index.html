@@ -1,130 +1,264 @@
-<!DOCTYPE html>
+<!--
+  index.html
+  Template: Minimal, responsive academic website suitable for GitHub Pages
+  Instructions:
+    - Replace placeholder text (NAME, BIO, PROJECTS, etc.) with your own content.
+    - Add your favicon at /assets/favicon.ico and your profile photo at /assets/photo.jpg
+    - Put PDFs (CV, papers) in /assets/ and link them in the Publications/CV section.
+    - If you use this on GitHub Pages, commit this file to the repository's root (or to /docs/) and enable Pages.
+    - Optional: Replace inline CSS with a compiled stylesheet and add analytics or OpenGraph images.
+-->
+
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sassan Taghvaei Asl</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Researcher in Political Philosophy, Linguistics, and AI & Democracy. Exploring the Prediction–Plurality Paradox.">
-  <link rel="icon" href="favicon.ico">
+  <title>Sassan Taghvaei Asl — Researcher in Political Philosophy, Linguistics & AI</title>
+  <meta name="description" content="Sassan Taghvaei Asl — Researcher exploring the intersection of political philosophy, linguistics and the politics of AI.">
+  <link rel="icon" href="/assets/favicon.ico">
+
+  <!-- Open Graph (recommended) -->
+  <meta property="og:title" content="Sassan Taghvaei Asl — Researcher">
+  <meta property="og:description" content="Researcher in political philosophy, linguistics & AI. Papers, projects, and contact.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sassantaghvaeiasl.github.io/">
+  <!-- <meta property="og:image" content="/assets/og-image.png"> -->
+
+  <!-- Structured data (simple) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sassan Taghvaei Asl",
+    "jobTitle": "Researcher",
+    "url": "https://sassantaghvaeiasl.github.io/",
+    "sameAs": [
+      "https://orcid.org/REPLACE",
+      "https://scholar.google.com/citations?user=REPLACE"
+    ]
+  }
+  </script>
+
   <style>
-    :root {
-      --bg: #fafafa;
-      --text: #222;
-      --accent: #005f99;
+    :root{
+      --bg:#ffffff; --muted:#6b7280; --accent:#0b7285; --text:#0f172a; --card:#f8fafc;
+      --gap:1rem; --radius:12px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111;
-        --text: #eee;
-        --accent: #4dabf7;
-      }
-    }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      scroll-behavior: smooth;
-    }
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      border-bottom: 1px solid #ccc3;
-    }
-    h1 {
-      margin-bottom: 0.3rem;
-      font-size: 1.8rem;
-    }
-    nav {
-      margin-top: 1rem;
-    }
-    nav a {
-      margin: 0 0.7rem;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      max-width: 800px;
-      margin: 2.5rem auto;
-      padding: 0 1rem;
-    }
-    h2 {
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.3rem;
-      font-size: 1.3rem;
-    }
-    ul {
-      list-style: disc;
-      padding-left: 1.5rem;
-    }
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-    a {
-      color: var(--accent);
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+    header{border-bottom:1px solid #eef2f7}
+    .container{max-width:1000px;margin:0 auto;padding:1.25rem}
+
+    /* Header / Nav */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:var(--gap)}
+    .brand{display:flex;align-items:center;gap:.8rem}
+    .brand h1{font-size:1.05rem;margin:0}
+    .brand p{margin:0;font-size:.9rem;color:var(--muted)}
+    nav ul{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+    nav button{display:none}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:180px 1fr;gap:1.25rem;align-items:center;padding:2rem 0}
+    .photo{width:160px;height:160px;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#eef2f7,#fff);display:flex;align-items:center;justify-content:center}
+    .photo img{width:100%;height:100%;object-fit:cover}
+    .intro h2{margin:.2rem 0;font-size:1.4rem}
+    .intro p{margin:.4rem 0;color:var(--muted);line-height:1.4}
+
+    /* Sections */
+    section{padding:1.5rem 0;border-top:1px solid #f1f5f9}
+    .grid-2{display:grid;grid-template-columns:1fr 340px;gap:1rem}
+    .card{background:var(--card);padding:1rem;border-radius:var(--radius);box-shadow:0 1px 2px rgba(12,15,20,0.03)}
+
+    /* Publications list */
+    .pubs{display:grid;gap:.6rem}
+    .pub-item{padding:.6rem;border-radius:8px}
+    .pub-item h4{margin:0 .1rem;font-size:.95rem}
+    .pub-meta{color:var(--muted);font-size:.85rem}
+
+    /* Footer */
+    footer{padding:1rem 0;color:var(--muted);font-size:.9rem;border-top:1px solid #eef2f7}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;grid-template-rows:auto auto}
+      .grid-2{grid-template-columns:1fr}
+      nav ul{display:none}
+      nav button{display:inline-block}
+      .photo{width:120px;height:120px}
     }
   </style>
 </head>
-
 <body>
   <header>
-    <h1>Sassan Taghvaei Asl</h1>
-    <p>Researcher | Political Philosophy · Linguistics · AI & Democracy</p>
-    <nav aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="container nav">
+      <div class="brand">
+        <img src="/assets/favicon.ico" alt="logo" style="width:42px;height:42px;border-radius:8px;object-fit:cover">
+        <div>
+          <h1>Sassan Taghvaei Asl</h1>
+          <p>Researcher | Political Philosophy · Linguistics · AI & Democracy</p>
+        </div>
+      </div>
+
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button aria-expanded="false" aria-controls="mobile-menu" id="menuBtn">Menu</button>
+      </nav>
+    </div>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am an interdisciplinary researcher bridging political philosophy, linguistics, and AI. 
-      My current focus is on the <strong>Prediction–Plurality Paradox</strong> inspired by Hannah Arendt, 
-      exploring how algorithmic infrastructures can sustain democratic plurality and political agency.
-    </p>
-  </section>
+  <main class="container">
+    <section class="hero" id="top">
+      <div class="photo card" aria-hidden="false">
+        <!-- Replace with your photo or a symbolic image -->
+        <img src="/assets/photo.jpg" alt="Photo of Sassan Taghvaei Asl">
+      </div>
+      <div class="intro">
+        <h2>Hi — I study how language, algorithms, and political power interact.</h2>
+        <p>I research the political philosophy of AI, linguistic dimensions of technopolitics, and democratic effects of algorithmic decision‑making. Current work includes projects on algorithmic ranking, interpretability, and political fairness.</p>
+        <p style="margin-top:.6rem"><strong>Available for collaborations, peer review, and invited talks.</strong></p>
+      </div>
+    </section>
 
-  <section id="research">
-    <h2>Research Interests</h2>
-    <ul>
-      <li>Algorithmic Natality & Democratic Theory</li>
-      <li>Political Agency in Computational Contexts</li>
-      <li>Philosophy of Technology and Democracy</li>
-      <li>Digital Public Spheres</li>
-    </ul>
-  </section>
+    <section id="about">
+      <div class="grid-2">
+        <div>
+          <div class="card">
+            <h3>About</h3>
+            <p>Brief academic biography: education, positions, and methodological approach. Replace this paragraph with 3–4 concise sentences about where you trained, main interests, and recent projects.</p>
 
-  <section id="publications">
-    <h2>Selected Publications & Works</h2>
-    <ul>
-      <li>Translation: <em>Communicative AI</em> (Coeckelbergh & Gunkel, Persian, 2025)</li>
-      <li>Translation: <em>Wittgenstein's Form of Life</em> (Kishik, Persian, 2012)</li>
-      <li>Review: Stiegler, <em>The Age of Disruption</em>, Iran Book News Agency (2025)</li>
-    </ul>
-  </section>
+            <h4>Selected roles</h4>
+            <ul>
+              <li>PhD (University Name) — topic summary</li>
+              <li>Visiting researcher at …</li>
+              <li>Reviewer for journals X, Y</li>
+            </ul>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:staqvaei@ut.ac.ir">staqvaei@ut.ac.ir</a></p>
-    <p><a href="Resume.pdf" download>Download CV</a></p>
-  </section>
+            <p><a href="/assets/cv.pdf" download>Download CV (PDF)</a></p>
+          </div>
 
-  <footer>
-    <p>© 2025 Sassan Taghvaei Asl</p>
+          <div class="card" style="margin-top:1rem">
+            <h3>Research interests</h3>
+            <p class="muted">Political philosophy · Critical algorithm studies · Linguistic injustice · Fairness & interpretability</p>
+            <ul>
+              <li>Algorithmic ranking and democratic visibility</li>
+              <li>Language, meaning and automated classification</li>
+              <li>Normative frameworks for AI governance</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <h4>Contact</h4>
+            <p class="pub-meta">Copenhagen, Denmark</p>
+            <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p style="margin-top:.6rem">Links:</p>
+            <ul>
+              <li><a href="#">ORCID</a></li>
+              <li><a href="#">Google Scholar</a></li>
+              <li><a href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+
+          <div class="card" style="margin-top:1rem">
+            <h4>Quick links</h4>
+            <ul>
+              <li><a href="#publications">Publications</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#blog">Blog / News</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="research">
+      <h3>Research & Projects</h3>
+      <div class="card">
+        <p><strong>Project A —</strong> Short summary of current research project, links to preprint or repo.</p>
+        <p><strong>Project B —</strong> Short summary of past/current collaboration.</p>
+        <p><a href="#">View all projects (link to a projects page)</a></p>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h3>Selected Publications & Works</h3>
+      <div class="pubs">
+        <article class="pub-item card">
+          <h4>Author(s). (Year). <em>Title of paper</em>. Journal / Venue.</h4>
+          <div class="pub-meta">Link: <a href="#">PDF</a> · DOI: <span class="pub-meta">10.xxxx/xxxx</span></div>
+        </article>
+
+        <article class="pub-item card">
+          <h4>Author(s). (Year). <em>Title of chapter or review</em>. Publisher / Journal.</h4>
+          <div class="pub-meta">Link: <a href="#">Text</a></div>
+        </article>
+
+        <!-- Add more publication items here -->
+      </div>
+    </section>
+
+    <section id="blog">
+      <h3>Blog / News</h3>
+      <div class="card">
+        <p>Short updates: conference talks, essays, public writing. You can either put full posts here or link to a separate /blog/ page or external medium (e.g., Medium, Substack).</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h3>Contact</h3>
+      <div class="card">
+        <p>If you'd like to get in touch about collaborations, speaking, or press, email <a href="mailto:your.email@example.com">your.email@example.com</a> or use the form below.</p>
+
+        <!-- Simple contact form (works with static forms services like Formspree or Netlify Forms) -->
+        <form action="https://formspree.io/f/your-id" method="POST">
+          <label for="name">Name</label><br>
+          <input id="name" name="name" type="text" required style="width:100%;padding:.6rem;margin:.3rem 0;border-radius:8px;border:1px solid #e6eef6">
+
+          <label for="email">Email</label><br>
+          <input id="email" name="email" type="email" required style="width:100%;padding:.6rem;margin:.3rem 0;border-radius:8px;border:1px solid #e6eef6">
+
+          <label for="message">Message</label><br>
+          <textarea id="message" name="message" rows="4" required style="width:100%;padding:.6rem;margin:.3rem 0;border-radius:8px;border:1px solid #e6eef6"></textarea>
+
+          <button type="submit" style="padding:.6rem 1rem;border-radius:8px;border:0;background:var(--accent);color:#fff;cursor:pointer">Send message</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div>
+        <strong>Sassan Taghvaei Asl</strong>
+        <div style="color:var(--muted);font-size:.9rem">Researcher • Copenhagen</div>
+      </div>
+      <div style="color:var(--muted);font-size:.9rem">© <span id="year"></span>. Built with ❤️ · Hosted on GitHub Pages</div>
+    </div>
   </footer>
+
+  <script>
+    // Small helpers: year, mobile menu
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    if(menuBtn){
+      menuBtn.addEventListener('click', ()=>{
+        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!expanded));
+        // For simplicity: jump to top when toggled on small screens
+        if(!expanded) window.scrollTo({top:0,behavior:'smooth'});
+      });
+    }
+  </script>
 </body>
 </html>
